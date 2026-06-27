@@ -9,21 +9,18 @@ function Book(title, author) {
 
 }
 
-function addBookToLibrary(title, author) {
+function addBookToLibrary(title, author, library) {
   // take params, create a book then store it in the array
   let book = new Book(title, author);
 
-  return book;
+  library.push(book);
+
+  return library;
 
 }
 
 
-myLibrary.push(addBookToLibrary("1984", "George Orwell"));
-myLibrary.push(addBookToLibrary("The Client", "John Gresham"));
-myLibrary.push(addBookToLibrary("Ferenheight 451", "Ray Bradbury"));
-myLibrary.push(addBookToLibrary("Lord of the Flies", "Somebody IcantRemember"));
 
-console.log(myLibrary);
 
 
 
