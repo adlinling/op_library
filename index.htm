@@ -8,24 +8,47 @@
 
     <link href="style.css?v=0.0.1" rel="stylesheet">
 
-    <script src="library.js?v=0.0.5"></script>
+    <script src="library.js?v=0.0.6"></script>
 </head>
 <body>
 
+
+<div id="shelf"></div>
+
 <script>
-
-
 
 addBookToLibrary("1984", "George Orwell", myLibrary);
 addBookToLibrary("The Client", "John Gresham", myLibrary);
 addBookToLibrary("Fahrenheit 451", "Ray Bradbury", myLibrary);
 addBookToLibrary("Lord of the Flies", "William Golding", myLibrary);
 addBookToLibrary("Pride and Prejudice", "Jane Austin", myLibrary);
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", myLibrary);
+addBookToLibrary("Treasure Island", "Robert Louis Stevenson", myLibrary);
 
 
-console.log(myLibrary);
+//console.log(myLibrary);
+
+const shelf = document.querySelector("#shelf");
+
+let infostring = "";
+
+for (let i in myLibrary) {
+
     
+    console.log(myLibrary[i]);
+
+    infostring += "<div class='book'><div class='title'>" + myLibrary[i].title + "</div> <div class='author'>by<br><br>" + myLibrary[i].author + "</div><div class='bookid'>" + myLibrary[i].id + "</div></div>";
+    
+}
+
+
+shelf.innerHTML = infostring;
+
+
 </script>
+
+
+
 
 </body>
 </html>

@@ -15,8 +15,6 @@ function addBookToLibrary(title, author, library) {
 
   library.push(book);
 
-  return library;
-
 }
 
 
