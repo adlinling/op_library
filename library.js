@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, read) {
 
@@ -20,6 +20,31 @@ function addBookToLibrary(title, author, read, library) {
 
 
 
+function removeBookFromLibrary(id){
+
+    let newLibrary = [];
+
+    console.log(myLibrary);
+    console.log("Book with this id will be removed:" + id);
+
+
+    newLibrary = myLibrary.filter(book => book.id !== id);
+    //Alternative way is to use a "for in" loop to create a new array
+    /*
+    for (let i in myLibrary) {
+        console.log(myLibrary[i].id);
+        if(myLibrary[i].id !== id){
+          newLibrary.push(myLibrary[i]);
+        }
+
+    }*/
+
+    myLibrary = newLibrary;
+
+    listbooks(myLibrary);
+
+}
+
 function listbooks(library){
 
   let infostring = "";
@@ -29,7 +54,8 @@ function listbooks(library){
       
       console.log(library[i]);
 
-      infostring += "<div class='book'><div class='removediv' ><div class='remove' title='Remove' id='" + library[i].id + "'>&times;</div></div><div class='title'>" + library[i].title + "</div> <div class='author'>by<br><br>" + library[i].author + "</div><div class='bookid'>" + library[i].id + "</div></div>";
+      //Step 5 of the assignment suggested using data attributes:  https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes
+      infostring += "<div class='book'><div class='removediv' ><div class='remove' title='Remove' id='" + library[i].id + "' onclick='removeBookFromLibrary(this.id);'>&times;</div></div><div class='title'>" + library[i].title + "</div> <div class='author'>by<br><br>" + library[i].author + "</div><div class='bookid'></div></div>";
       
   }
 
