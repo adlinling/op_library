@@ -7,8 +7,6 @@ function Book(title, author, read) {
   this.author = author;
   this.read = read;
   this.id = crypto.randomUUID();
-
-
 }
 
 
