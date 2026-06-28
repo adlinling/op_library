@@ -12,14 +12,44 @@
     padding:10px;
     gap:16px;
     width:90%;
-    border:1px black solid;
+    
+}
+
+.legend{
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height:40px;
+  
 }
 
 
-.newbook, .header{
+.readsymbol, .unreadsymbol{
+    width:10px;
+    height:10px;
+}
+
+.readsymbol{
+    background-color:green;
+}
+
+.unreadsymbol{
+    background-color: red;
+}
+
+.header{
     display:flex;
     justify-content: center;
 }
+
+.newbook{
+    display:flex;
+    justify-content: center;
+    margin-top:20px;
+}
+
 
 
 #open{
@@ -78,9 +108,9 @@ dialog::backdrop{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr 1fr;
     padding:6px;
-    width:150px;
+    width:200px;
     max-width:320px;
-    height:200px;
+    height:250px;
     border:3px black solid;
 }
 
@@ -121,10 +151,11 @@ dialog::backdrop{
     grid-row: 3 / 4;
 }
 
-.bookid{
+.readstatus{
 
     padding:20px;
     font-size:11px;
+    cursor:pointer;
     display:flex;
     justify-content: center;
     grid-column: 1 / 2;

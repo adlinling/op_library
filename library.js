@@ -8,7 +8,16 @@ function Book(title, author, read) {
   this.read = read;
   this.id = crypto.randomUUID();
 
+
 }
+
+
+Book.prototype.toggleReadStatus = function() {
+  console.log(`Current read status: ${this.read}`);
+  this.read = (this.read)?0:1;
+  console.log(`New read status: ${this.read}`);
+};
+
 
 function addBookToLibrary(title, author, read, library) {
   // take params, create a book then store it in the array
@@ -19,6 +28,21 @@ function addBookToLibrary(title, author, read, library) {
 }
 
 
+
+function toggleReadStatus(id){
+
+    //console.log("Toggle status for book id: " + id);
+    for (let i in myLibrary) {
+
+      if(myLibrary[i].id == id){
+          console.log("Toggle read status for book " + myLibrary[i].title);
+          myLibrary[i].toggleReadStatus();
+      }
+      
+    }
+
+    listbooks(myLibrary);
+}
 
 function removeBookFromLibrary(id){
 
@@ -48,14 +72,24 @@ function removeBookFromLibrary(id){
 function listbooks(library){
 
   let infostring = "";
+  let readclass = "";
 
   for (let i in library) {
 
       
       console.log(library[i]);
 
+      if(library[i].read == 0){
+        readclass = "unreadsymbol";
+      }
+
+      
+      if(library[i].read == 1){
+        readclass = "readsymbol";
+      }
+
       //Step 5 of the assignment suggested using data attributes:  https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes
-      infostring += "<div class='book'><div class='removediv' ><div class='remove' title='Remove' id='" + library[i].id + "' onclick='removeBookFromLibrary(this.id);'>&times;</div></div><div class='title'>" + library[i].title + "</div> <div class='author'>by<br><br>" + library[i].author + "</div><div class='bookid'></div></div>";
+      infostring += "<div class='book'><div class='removediv' ><div class='remove' title='Remove' id='" + library[i].id + "' onclick='removeBookFromLibrary(this.id);'>&times;</div></div><div class='title'>" + library[i].title + "</div> <div class='author'>by<br><br>" + library[i].author + "</div><div class='readstatus' data-bookid='" + library[i].id + "' onclick='toggleReadStatus(this.dataset.bookid);'><div class='"+ readclass + "' title='Change read status'></div></div></div>";
       
   }
 
