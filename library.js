@@ -87,7 +87,7 @@ function listbooks(library){
       }
 
       //Step 5 of the assignment suggested using data attributes:  https://developer.mozilla.org/en-US/docs/Web/HTML/How_to/Use_data_attributes
-      infostring += "<div class='book'><div class='removediv' ><div class='remove' title='Remove' id='" + library[i].id + "' onclick='removeBookFromLibrary(this.id);'>&times;</div></div><div class='title'>" + library[i].title + "</div> <div class='author'>by<br><br>" + library[i].author + "</div><div class='readstatus' data-bookid='" + library[i].id + "' onclick='toggleReadStatus(this.dataset.bookid);'><div class='"+ readclass + "' title='Change read status'></div></div></div>";
+      infostring += "<div class='book'><div class='removediv' ><div class='remove1'></div><div class='remove2' title='Remove' id='" + library[i].id + "' onclick='removeBookFromLibrary(this.id);'>&times;</div></div><div class='title'>" + library[i].title + "</div> <div class='author'>by<br><br>" + library[i].author + "</div><div class='readstatus' data-bookid='" + library[i].id + "' onclick='toggleReadStatus(this.dataset.bookid);'><div class='"+ readclass + "' title='Change read status'></div></div></div>";
       
   }
 
