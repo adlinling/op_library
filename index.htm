@@ -6,49 +6,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Project Library</title>
 
-    <link href="style.css?v=0.0.1" rel="stylesheet">
+    <link href="style.css?v=0.0.6" rel="stylesheet">
 
-    <script src="library.js?v=0.0.6"></script>
+    <script src="library.js?v=0.0.9"></script>
 </head>
 <body>
 
+    <div class="header">
+        LIBRARY
+    </div>
 
-<div id="shelf"></div>
+<div id="shelf">
+
+</div>
+
+
+<div class="newbook">
+    <button id='open'>Add New Book</button>
+</div>
+
+
+<!--<p><button id="alert">Trigger alert</button></p>-->
+
+
+  <dialog id="dialog">
+     
+    <form action="" id="addbookform" name="addbookform">
+
+        <div class="formfield" style="font-size:28px;font-weight:bold;padding:10px;">
+            Add a Book
+        </div>
+        <div class="formfield">
+
+            <div class="formleft">Title:</div><div class="formright"><input type="text" id="title" name="title" placeholder="Enter book title" required></div>
+        </div>
+
+        <div class="formfield">
+            <div class="formleft">Author:</div><div class="formright"><input type="text" id="author" name="author" placeholder="Enter author name" required></div>
+        </div>
+        
+        <div class="formfield">
+            <div class="formleft">Read:</div><div class="formright"><input type="checkbox" id="read" name="read"></div>
+        </div>
+        
+        <div class="formfield">  
+          <div class="formleft"></div><div class="formright"><button type="button" id="close">Add Book</button> &nbsp;&nbsp; <button type="button" id="cancel">Cancel</button></div>
+        </div>
+        
+        
+    </form>
+    
+  </dialog>
+
 
 <script>
 
-addBookToLibrary("1984", "George Orwell", myLibrary);
-addBookToLibrary("The Client", "John Gresham", myLibrary);
-addBookToLibrary("Fahrenheit 451", "Ray Bradbury", myLibrary);
-addBookToLibrary("Lord of the Flies", "William Golding", myLibrary);
-addBookToLibrary("Pride and Prejudice", "Jane Austin", myLibrary);
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", myLibrary);
-addBookToLibrary("Treasure Island", "Robert Louis Stevenson", myLibrary);
 
 
 //console.log(myLibrary);
 
 const shelf = document.querySelector("#shelf");
 
-let infostring = "";
-
-for (let i in myLibrary) {
-
-    
-    console.log(myLibrary[i]);
-
-    infostring += "<div class='book'><div class='title'>" + myLibrary[i].title + "</div> <div class='author'>by<br><br>" + myLibrary[i].author + "</div><div class='bookid'>" + myLibrary[i].id + "</div></div>";
-    
-}
+listbooks(myLibrary);
 
 
-shelf.innerHTML = infostring;
+
+
+const dialog = document.getElementById("dialog");
+const openButton = document.getElementById("open");
+const closeButton = document.getElementById("close");
+const alertButton = document.getElementById("alert");
+const cancelButton = document.getElementById("cancel");
+
+// Open button opens a modal dialog
+openButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+cancelButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+// Alert button triggers an alert
+//alertButton.addEventListener("click", () => {
+  //alert("you clicked me!");
+//});
+
+// Close button closes the dialog box
+closeButton.addEventListener("click", () => {
+
+  let newauthor = document.getElementById("author").value;
+  let newtitle = document.getElementById("title").value;
+  let newreadstate = (document.getElementById("read").checked)?1:0;
+
+
+  console.log("New book to add:")
+  console.log("Title: " + newtitle)
+  console.log("Author: " + newauthor)
+  console.log("Read: " + newreadstate)
+  
+
+  if(newauthor && newtitle){
+
+    addBookToLibrary(newtitle, newauthor, newreadstate, myLibrary);
+    listbooks(myLibrary);
+    dialog.close();
+  
+  }else{
+    alert("Form fields must not be empty!");
+  }
+  
+});
+
 
 
 </script>
-
-
-
 
 </body>
 </html>

@@ -5,7 +5,7 @@
   
 
 #shelf{
-    margin-top:50px;
+    margin-top:10px;
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
@@ -16,16 +16,91 @@
 }
 
 
+.newbook, .header{
+    display:flex;
+    justify-content: center;
+}
+
+
+#open{
+    cursor: pointer;
+}
+
+.header{
+    margin-top:20px;
+    font-size:32px;
+    font-weight:bold;
+    font-family: 'Times New Roman', Times, serif
+}
+
+.formfield{
+    
+    display:flex;
+    justify-content: center;
+    width:300px;
+
+}
+
+.formleft{
+    padding-top:4px;
+    display:flex;
+    flex: 1;
+    justify-content:right;
+}
+
+.formright{
+    padding-top:4px;
+    padding-left:4px;
+    flex: 3;
+    text-align:left;
+    
+}
+
+
+/* Info on styling dialog modal:  https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal */
+dialog{
+    padding-top:150px;
+    margin-top: 10%;
+    width:400px;
+    height:300px;
+}
+
+
+dialog::backdrop{
+  opacity:70%;
+  background-color:black;
+}
+
+
 .book{
     display:grid;
     text-align: center;
     grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
     padding:6px;
     width:150px;
     max-width:320px;
     height:200px;
     border:3px black solid;
+}
+
+
+.removediv{
+    display:flex;
+    width:100%;
+    justify-content:right;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+
+.remove{
+    font-size:20px;
+    color:red;
+    position: relative;
+    cursor:pointer;
+    top:0px;
+    left:66px;
 }
 
 .title{
@@ -35,14 +110,14 @@
     justify-content: center;
     align-items: center;
     grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-row: 2 / 3;
 }
 
 .author{
     font-size:18px;
     text-align:center;
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4;
 }
 
 .bookid{
@@ -51,5 +126,5 @@
     display:flex;
     justify-content: center;
     grid-column: 1 / 2;
-    grid-row: 3 / 4;
+    grid-row: 4 / 5;
 }
